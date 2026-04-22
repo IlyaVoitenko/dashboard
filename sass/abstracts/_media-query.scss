@@ -1,0 +1,36 @@
+@use "sass:map";
+@use "./variables" as *;
+
+@mixin mq-up($breakpoint) {
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @error "Unknown breakpoint `#{$breakpoint}`. Available: #{map.keys($breakpoints)}.";
+  }
+
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint) {
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @error "Unknown breakpoint `#{$breakpoint}`. Available: #{map.keys($breakpoints)}.";
+  }
+
+  @media (max-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin mq-between($min-breakpoint, $max-breakpoint) {
+  @if not map.has-key($breakpoints, $min-breakpoint) {
+    @error "Unknown min breakpoint `#{$min-breakpoint}`. Available: #{map.keys($breakpoints)}.";
+  }
+
+  @if not map.has-key($breakpoints, $max-breakpoint) {
+    @error "Unknown max breakpoint `#{$max-breakpoint}`. Available: #{map.keys($breakpoints)}.";
+  }
+
+  @media (min-width: map.get($breakpoints, $min-breakpoint)) and (max-width: map.get($breakpoints, $max-breakpoint)) {
+    @content;
+  }
+}

@@ -1,4 +1,39 @@
+@use "../../sass/abstracts/media-query" as *;
+
 .container {
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  width: 50%;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  height: min-content;
+  background: #050d28;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 13, 40, 1) 0%,
+    rgba(1, 23, 73, 1) 70%
+  );
+
+  @include mq-down(sm) {
+    width: auto;
+    padding: 10px;
+    background: none;
+  }
+
+  @include mq-between(md, lg) {
+    width: 80%;
+    background: none;
+    background-color: #102a43;
+  }
+
+  @include mq-up(xl) {
+    width: 50%;
+    background: none;
+    background-color: #0f5132;
+  }
 }

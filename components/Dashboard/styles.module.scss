@@ -1,4 +1,9 @@
+@use "../../sass/abstracts/media-query" as *;
 .container {
   display: flex;
   width: 100%;
+
+  @include mq-down(sm) {
+    flex-direction: column;
+  }
 }

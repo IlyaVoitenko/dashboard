@@ -1,3 +1,4 @@
+@use "../sass/abstracts/media-query" as *;
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -21,8 +22,21 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #070b1e;
+  background-image: radial-gradient(
+    ellipse 50% 50% at 70% 50%,
+    rgba(0, 101, 252) 0%,
+    transparent 70%
+  );
+  min-height: 100dvh;
 }
 
 .container {
   display: flex;
+
+  @include mq-down(sm) {
+    flex-direction: column;
+  }
 }
